@@ -1,0 +1,333 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bangers', cursive;
+}
+
+/* Body styling */
+body {
+    background-image: url('file:///I:/Downloads/dump/Untitled%20design.svg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    color: #fff;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 51, 51, 0.9);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.menu-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #fff;
+    display: block;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px;
+}
+
+.navbar-item {
+    color: white;
+    font-size: 1.5em;
+    display: none;
+}
+
+/* Drawer styles */
+.drawer {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1100;
+    transition: left 0.3s ease;
+}
+
+.drawer.open {
+    left: 0;
+}
+
+.drawer a {
+    display: block;
+    margin: 15px 0;
+    color: #ffea00;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.drawer a:hover {
+    color: #fff;
+}
+
+/* Featured Section Styling */
+.featured-section {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 40px 20px;
+    border-radius: 10px;
+    margin: 100px auto 40px;
+    text-align: center;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.featured-title {
+    font-size: 2.5em;
+    color: #ffea00;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
+}
+
+.featured-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.featured-item {
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+    text-align: center;
+    background-color: #222;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-item:hover {
+    transform: scale(1.05);
+    background-color: #333;
+    box-shadow: 0 8px 12px rgba(255, 247, 0, 0.7);
+}
+
+.featured-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.featured-item:hover img {
+    transform: scale(1.1);
+}
+
+.featured-item h3 {
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 15px;
+}
+
+.featured-item p {
+    color: #ddd;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+/* Responsive styles for navbar and featured items */
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none;
+    }
+
+    .navbar-item {
+        display: block;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+    }
+
+    .drawer {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .featured-item {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .featured-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+.filter-buttons {
+    margin-bottom: 20px;
+}
+
+.filter-buttons button {
+    background-color: #ffea00;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.filter-buttons button:hover {
+    background-color: #ddd;
+}
+
+/* Hero Banner Styling */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+}
+
+.slides-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%);
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.slide-content h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.slide-content p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.slide-content .btn {
+    padding: 10px 20px;
+    background-color: #ffea00;
+    color: #333;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.slide-content .btn:hover {
+    background-color: #ddd;
+}
+
+/* Controls Styling */
+.controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.controls .prev,
+.controls .next {
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 15px;
+    border-radius: 50%;
+    user-select: none;
+}
+
+.controls .prev:hover,
+.controls .next:hover {
+    background: #ffea00;
+    color: #333;
+}
+
+/* Dots Styling */
+.dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+}
+
+.dots .dot {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dots .dot.active {
+    background-color: #ffea00;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffea00;
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
