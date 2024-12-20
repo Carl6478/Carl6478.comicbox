@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comics Store - Responsive Drawer</title>
+    <!-- Import Bangers Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bangers', cursive;
+        }
+
+        /* Body styling */
+        body {
+            background-image: url('file:///I:/Downloads/dump/Untitled%20design.svg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: #fff;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .menu-icon {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #fff;
+            display: block;
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 50px;
+        }
+
+        .navbar-item {
+            color: white;
+            font-size: 1.5em;
+            display: none;
+        }
+
+        /* Drawer styles */
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            z-index: 1100;
+            transition: left 0.3s ease;
+        }
+
+        .drawer.open {
+            left: 0;
+        }
+
+        .drawer a {
+            display: block;
+            margin: 15px 0;
+            color: #ffea00;
+            font-size: 1.2em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .drawer a:hover {
+            color: #fff;
+        }
+
+        /* Featured Section Styling */
+        .featured-section {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin: 100px auto 40px;
+            text-align: center;
+            max-width: 1200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .featured-title {
+            font-size: 2.5em;
+            color: #ffea00;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            letter-spacing: 3px;
+        }
+
+        .featured-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .featured-item {
+            flex: 1 1 calc(33.333% - 20px);
+            max-width: calc(33.333% - 20px);
+            text-align: center;
+            background-color: #222;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .featured-item:hover {
+            transform: scale(1.05);
+            background-color: #333;
+            box-shadow: 0 8px 12px rgba(255, 247, 0, 0.7);
+        }
+
+        .featured-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .featured-item h3 {
+            font-size: 1.5em;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        .featured-item p {
+            color: #ddd;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        /* Responsive styles for navbar and featured items */
+        @media (min-width: 768px) {
+            .menu-icon {
+                display: none;
+            }
+
+            .navbar-item {
+                display: block;
+            }
+
+            .logo {
+                position: static;
+                transform: none;
+            }
+
+            .drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .featured-item {
+                flex: 1 1 calc(50% - 20px);
+                max-width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .featured-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <span class="menu-icon" onclick="toggleDrawer()">☰</span>
+        <div class="logo">
+            <img src="https://via.placeholder.com/150" alt="Logo">
+        </div>
+        <div class="navbar-item">Home</div>
+        <div class="navbar-item">Comics</div>
+        <div class="navbar-item">Contact</div>
+    </nav>
+
+    <!-- Drawer Section -->
+    <div class="drawer" id="drawer">
+        <a href="#">Home</a>
+        <a href="#">Comics</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Featured Section -->
+    <div class="featured-section">
+        <h2 class="featured-title">Featured Comics</h2>
+        <div class="featured-container">
+            <div class="featured-item">
+                <img src="https://i0.wp.com/ultimatecomics.com/wp-content/uploads/2021/06/Scan2021-06-03_125144.jpg?fit=1948%2C2972&ssl=1"
+                    alt="Featured Comic 1">
+                <h3>Super Pup Adventures</h3>
+                <p>Exciting adventures for kids that will keep them entertained!</p>
+            </div>
+            <div class="featured-item">
+                <img src="https://m.media-amazon.com/images/I/71GPeneF0rL._AC_UF894,1000_QL80_.jpg"
+                    alt="Featured Comic 2">
+                <h3>Galaxy Defenders</h3>
+                <p>An interstellar battle for teens and fans of action comics.</p>
+            </div>
+            <div class="featured-item">
+                <img src="https://i.pinimg.com/originals/1f/6b/33/1f6b338c3140abbba716526c0860b326.jpg"
+                    alt="Featured Comic 3">
+                <h3>Dark Tales Saga</h3>
+                <p>A gripping, mature story for adult readers who love suspense.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle drawer visibility
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.toggle('open');
+        }
+
+        // Close drawer when clicking outside it
+        window.addEventListener('click', function (e) {
+            const drawer = document.getElementById('drawer');
+            if (!drawer.contains(e.target) && !e.target.matches('.menu-icon')) {
+                drawer.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+
+
+
+<footer style="background-color: rgba(51, 51, 51, 0.9); color: #fff; padding: 40px 20px; text-align: center;">
+    <div
+        style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between;">
+
+        <!-- About Us Section -->
+        <div style="flex: 1 1 250px; text-align: left;">
+            <h3 style="font-size: 1.8em; color: #ffea00;">About Us</h3>
+            <p style="font-size: 1em;">We are passionate about delivering the best comics to readers of all ages. From
+                thrilling adventures to timeless classics, we have something for everyone.</p>
+            <a href="#" style="color: #ffea00; text-decoration: none;">Learn More</a>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div style="flex: 1 1 150px; text-align: left;">
+            <h3 style="font-size: 1.8em; color: #ffea00;">Quick Links</h3>
+            <ul style="list-style: none; padding: 0; font-size: 1em;">
+                <li><a href="#" style="color: #fff; text-decoration: none;">Home</a></li>
+                <li><a href="#" style="color: #fff; text-decoration: none;">Comics</a></li>
+                <li><a href="#" style="color: #fff; text-decoration: none;">Contact Us</a></li>
+                <li><a href="#" style="color: #fff; text-decoration: none;">FAQs</a></li>
+                <li><a href="#" style="color: #fff; text-decoration: none;">Shop comics by age rating</a></li>
+            </ul>
+        </div>
+
+        <!-- Social Media Section -->
+        <div style="flex: 1 1 150px; text-align: left;">
+            <h3 style="font-size: 1.8em; color: #ffea00;">Follow Us</h3>
+            <div style="font-size: 1.5em;">
+                <a href="#" style="color: #ffea00; margin-right: 10px;"><i class="fa fa-facebook"></i></a>
+                <a href="#" style="color: #ffea00; margin-right: 10px;"><i class="fa fa-twitter"></i></a>
+                <a href="#" style="color: #ffea00; margin-right: 10px;"><i class="fa fa-instagram"></i></a>
+                <a href="#" style="color: #ffea00; margin-right: 10px;"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <!-- Contact Information Section -->
+        <div style="flex: 1 1 250px; text-align: left;">
+            <h3 style="font-size: 1.8em; color: #ffea00;">Contact Us</h3>
+            <p style="font-size: 1em;">Email: <a href="mailto:support@comicsstore.com"
+                    style="color: #ffea00;">support@comicsstore.com</a></p>
+            <p style="font-size: 1em;">Phone: <a href="tel:+18005551234" style="color: #ffea00;">+1-800-555-1234</a></p>
+            <p style="font-size: 1em;">Address: 123 Comics Ave, Comicland, CL 45678</p>
+        </div>
+
+        <!-- Newsletter Subscription Section -->
+        <div style="flex: 1 1 300px; text-align: left;">
+            <h3 style="font-size: 1.8em; color: #ffea00;">Subscribe to Our Newsletter</h3>
+            <form>
+                <input type="email" placeholder="Enter your email..."
+                    style="padding: 10px; width: calc(100% - 20px); margin-bottom: 10px; border: none; border-radius: 5px;">
+                <button type="submit"
+                    style="background-color: #ffea00; color: #333; border: none; padding: 10px 20px; font-size: 1em; border-radius: 5px; cursor: pointer;">Subscribe</button>
+            </form>
+        </div>
+    </div>
+    <p style="margin-top: 20px; font-size: 0.8em; color: #ddd;">&copy; 2024 Comic Box. All Rights Reserved.</p>
+</footer>
+
+
+
+
+
+</html>
